@@ -1,0 +1,18 @@
+package com.sample
+
+import drools.cucumber.*;
+
+
+rule "HelloCukes is leet - process"
+ruleflow-group "cukes-rules"
+	when
+		$helloCukes : HelloCukes(
+			$myString : myString == "leet",
+			myInteger != 1337
+		)
+	then
+		System.out.println("RFG 'cukes-rules' : HelloCukes is leet!");
+		modify($helloCukes) {
+			setMyInteger(1337);
+		}
+end
